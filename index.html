@@ -25,6 +25,31 @@
   --teal:#34d399; --teal-dim:rgba(52,211,153,0.1);
   --radius:12px; --radius-sm:8px;
 }
+[data-theme=light] {
+  --bg:#f6f8fa; --bg2:#ffffff; --bg3:#f0f2f5; --bg4:#e4e8ed;
+  --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.16);
+  --text:#1a1f2e; --text2:#57606a; --text3:#8c959f;
+  --gold:#b8860b; --gold-dim:rgba(184,134,11,0.1);
+  --green:#1a7f37; --green-dim:rgba(26,127,55,0.1);
+  --red:#cf222e; --red-dim:rgba(207,34,46,0.08);
+  --blue:#0969da; --blue-dim:rgba(9,105,218,0.08);
+  --purple:#8250df; --purple-dim:rgba(130,80,223,0.08);
+  --teal:#0d7a5f; --teal-dim:rgba(13,122,95,0.08);
+}
+[data-theme=light] header { background:rgba(246,248,250,.92); }
+[data-theme=light] .bk-seg span { color: inherit; }
+[data-theme=light] .copy-btn { color:#fff; }
+[data-theme=light] .city-btn.active { color:var(--gold); }
+[data-theme=light] .main-tab.active { color:var(--gold); }
+
+.theme-btn {
+  width:34px; height:34px; border-radius:99px;
+  background:var(--bg3); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:16px; transition:background .15s, border-color .15s;
+  flex-shrink:0;
+}
+.theme-btn:hover { background:var(--bg4); border-color:var(--border2); }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 header{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
@@ -144,6 +169,69 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:1rem 0;}
 footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);font-size:12px;color:var(--text3);line-height:1.8;}
 footer a{color:var(--gold);text-decoration:none;}
 #cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161b22;border-top:1px solid rgba(255,255,255,.1);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+/* ── PAYSLIP CHECK ── */
+.ps-result{display:flex;align-items:flex-start;gap:12px;padding:1rem;border-radius:var(--radius-sm);border:1px solid var(--border);margin-top:1rem;}
+.ps-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ps-status-ok{background:var(--green-dim);border-color:rgba(63,185,80,.3);}
+.ps-status-over{background:var(--blue-dim);border-color:rgba(88,166,255,.3);}
+.ps-status-under{background:var(--red-dim);border-color:rgba(248,81,73,.3);}
+.ps-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;}
+.ps-desc{font-size:12px;color:var(--text2);line-height:1.6;}
+
+/* ── HOURS LOG ── */
+.day-row{display:grid;grid-template-columns:90px 1fr 1fr auto;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);}
+.day-row:last-child{border-bottom:none;}
+.day-label{font-size:13px;font-weight:500;color:var(--text);}
+.day-type{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;white-space:nowrap;}
+.type-weekday{background:var(--bg3);color:var(--text2);}
+.type-saturday{background:var(--blue-dim);color:var(--blue);}
+.type-sunday{background:var(--purple-dim);color:var(--purple);}
+.type-holiday{background:var(--red-dim);color:var(--red);}
+.day-earn{font-size:13px;font-weight:500;color:var(--gold);text-align:right;font-variant-numeric:tabular-nums;}
+.ph-toggle{font-size:11px;padding:3px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap;}
+.ph-toggle.active{background:var(--red-dim);color:var(--red);border-color:rgba(248,81,73,.3);}
+.tl-hrs-input{width:70px;height:32px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:0 8px;outline:none;text-align:center;-moz-appearance:textfield;transition:border-color .15s;}
+.tl-hrs-input::-webkit-outer-spin-button,.tl-hrs-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.tl-hrs-input:focus{border-color:var(--gold);}
+
+/* ── MILESTONES ── */
+.milestone-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;transition:border-color .2s;}
+.milestone-card:hover{border-color:var(--border2);}
+.ms-emoji{font-size:1.6rem;margin-bottom:.5rem;display:block;}
+.ms-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.ms-cost{font-size:11px;color:var(--text3);margin-bottom:.6rem;}
+.ms-weeks{font-size:1.2rem;font-weight:500;font-variant-numeric:tabular-nums;margin-bottom:4px;}
+.ms-bar-bg{height:6px;background:var(--bg4);border-radius:99px;overflow:hidden;}
+.ms-bar-fill{height:100%;border-radius:99px;transition:width .5s cubic-bezier(.25,.8,.25,1);}
+.ms-sub{font-size:10px;color:var(--text3);margin-top:4px;}
+
+/* ── TFN GUIDE ── */
+.tfn-step{display:flex;gap:14px;padding:1rem 0;border-bottom:1px solid var(--border);}
+.tfn-step:last-child{border-bottom:none;}
+.tfn-num{width:28px;height:28px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(212,168,67,.3);color:var(--gold);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.tfn-step-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.tfn-step-desc{font-size:12px;color:var(--text2);line-height:1.7;}
+.tfn-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--blue);text-decoration:none;margin-top:4px;font-weight:500;}
+.tfn-link:hover{text-decoration:underline;}
+.tfn-warning{background:var(--red-dim);border:1px solid rgba(248,81,73,.25);border-radius:var(--radius-sm);padding:.8rem 1rem;font-size:12px;color:var(--red);line-height:1.6;margin-bottom:1rem;}
+.tfn-tip{background:var(--green-dim);border:1px solid rgba(63,185,80,.25);border-radius:var(--radius-sm);padding:.8rem 1rem;font-size:12px;color:var(--green);line-height:1.6;}
+
+/* ── VISA COSTS ── */
+.vc-row{display:grid;grid-template-columns:auto 1fr 100px;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.vc-row:last-child{border-bottom:none;padding-bottom:0;}
+.vc-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.vc-name{font-size:13px;color:var(--text);}
+.vc-name small{display:block;font-size:11px;color:var(--text3);margin-top:1px;}
+.vc-input{width:100px;height:34px;padding:0 6px 0 18px;font-size:13px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;-moz-appearance:textfield;transition:border-color .15s;}
+.vc-input::-webkit-outer-spin-button,.vc-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.vc-input:focus{border-color:var(--gold);}
+
+/* ── BUDGET SNAPSHOT ── */
+.snap-btn{height:40px;padding:0 24px;background:var(--gold);color:#0d1117;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s;display:inline-flex;align-items:center;gap:8px;}
+.snap-btn:hover{opacity:.88;}
+.snap-preview{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:1rem;}
+#snapshot-card{font-family:'DM Sans',sans-serif;}
 </style>
 </head>
 <body>
@@ -154,12 +242,13 @@ footer a{color:var(--gold);text-decoration:none;}
     <a href="about.html">About</a>
     <a href="privacy-policy.html">Privacy</a>
     <div class="header-badge">🇦🇺 2024–25 ATO</div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
   </div>
 </header>
 
 <div class="hero">
   <h1>Your <em>complete</em> financial toolkit<br>for working in Australia</h1>
-  <p>Tax · Budget · Super · Penalty rates · Currency · Goal calculator · City compare — built for WHV holders (subclass 417 &amp; 462).</p>
+  <p>Tax · Budget · Super · Penalty rates · TFN guide · Visa costs · Payslip check · Hours log · Milestones · Budget snapshot — built for WHV holders (subclass 417 &amp; 462).</p>
 </div>
 
 <div class="main-nav">
@@ -172,6 +261,12 @@ footer a{color:var(--gold);text-decoration:none;}
     <button class="main-tab" data-tab="currency">💱 Currency</button>
     <button class="main-tab" data-tab="secondyear">🚜 2nd Year Visa</button>
     <button class="main-tab" data-tab="taxreturn">📋 Tax Return</button>
+    <button class="main-tab" data-tab="payslip">🧮 Payslip Check</button>
+    <button class="main-tab" data-tab="timelog">⏱ Hours Log</button>
+    <button class="main-tab" data-tab="milestones">🌏 Milestones</button>
+    <button class="main-tab" data-tab="tfn">🪪 TFN Guide</button>
+    <button class="main-tab" data-tab="visacost">💸 Visa Costs</button>
+    <button class="main-tab" data-tab="snapshot">📸 Budget Snapshot</button>
   </div>
 </div>
 
@@ -584,6 +679,244 @@ footer a{color:var(--gold);text-decoration:none;}
   </div>
 </div>
 
+<!-- TAB: PAYSLIP CHECK -->
+<div class="page-section container" id="tab-payslip">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross</span><span class="is-value c-gold" id="is-gross-payslip">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--red);"></div><span class="is-label">Correct weekly tax</span><span class="is-value c-red" id="is-wktax-payslip">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Weekly net</span><span class="is-value c-green" id="is-wknet-payslip">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><div class="ibadge" style="background:rgba(212,168,67,.15);">🧮</div>Payslip Decoder</div>
+      <div class="info-box">Enter the figures from your payslip. We'll calculate what your employer <em>should</em> have withheld and flag any discrepancy.</div>
+      <div class="field"><label>Gross earnings on this payslip (AUD)</label>
+        <div class="input-wrap"><span class="pfx">$</span><input type="number" id="ps-gross" value="0" min="0" step="0.01" oninput="updatePayslip()"></div>
+      </div>
+      <div class="field"><label>Tax withheld on this payslip (AUD)</label>
+        <div class="input-wrap"><span class="pfx">$</span><input type="number" id="ps-withheld" value="0" min="0" step="0.01" oninput="updatePayslip()"></div>
+      </div>
+      <div class="field"><label>Pay period of this payslip</label>
+        <div class="toggle-group" id="ps-period-toggle">
+          <button class="toggle-btn active" data-psperiod="weekly">Weekly</button>
+          <button class="toggle-btn" data-psperiod="fortnightly">Fortnightly</button>
+          <button class="toggle-btn" data-psperiod="monthly">Monthly</button>
+        </div>
+      </div>
+      <div class="field"><label>Has Tax File Number been provided to employer?</label>
+        <div class="toggle-group" id="ps-tfn-toggle">
+          <button class="toggle-btn active" data-tfn="yes">Yes (normal rate)</button>
+          <button class="toggle-btn" data-tfn="no">No TFN (45% flat)</button>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="grid-2" style="gap:10px;">
+        <div class="metric"><div class="m-label">Gross this period</div><div class="m-value c-gold" id="ps-r-gross">$0</div><div class="m-sub" id="ps-r-annual">~$0 annualised</div></div>
+        <div class="metric"><div class="m-label">Tax withheld</div><div class="m-value c-red" id="ps-r-withheld">$0</div><div class="m-sub">By employer</div></div>
+        <div class="metric"><div class="m-label">Tax should be</div><div class="m-value c-blue" id="ps-r-correct">$0</div><div class="m-sub">Per ATO WHV rate</div></div>
+        <div class="metric"><div class="m-label">Difference</div><div class="m-value" id="ps-r-diff">$0</div><div class="m-sub" id="ps-r-diff-sub">—</div></div>
+      </div>
+      <div id="ps-verdict"></div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:.6rem;"><div class="ibadge" style="background:rgba(212,168,67,.15);">💡</div>What to do if under-withheld</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.8;">
+          <p style="margin-bottom:.4rem;">1. Check your employer has your correct visa subclass on file</p>
+          <p style="margin-bottom:.4rem;">2. Provide your TFN if you haven't already</p>
+          <p style="margin-bottom:.4rem;">3. Ask payroll to apply the <strong style="color:var(--text);">Working Holiday Maker</strong> tax table</p>
+          <p>Under-withheld tax becomes a bill at tax return time — set aside the difference each pay.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: HOURS LOG -->
+<div class="page-section container" id="tab-timelog">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Base hourly rate</span><span class="is-value c-gold" id="is-rate-timelog">$0/hr</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Standard weekly</span><span class="is-value c-green" id="is-std-timelog">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><div class="ibadge" style="background:var(--teal-dim);">⏱</div>Weekly Hours Log</div>
+      <div class="info-box">Log your hours for each day. Saturdays, Sundays, and public holidays automatically apply penalty rate multipliers based on your award from the Penalty Rates tab.</div>
+      <div class="field"><label>Award / industry</label>
+        <select id="tl-award">
+          <option value="hospitality">Hospitality</option>
+          <option value="retail">Retail</option>
+          <option value="fastfood">Fast Food</option>
+          <option value="farm">Farm / Horticulture</option>
+        </select>
+      </div>
+      <div class="field"><label>Week starting</label>
+        <div class="input-wrap"><input type="date" id="tl-week-start" class="no-pfx" style="padding-left:12px;"></div>
+      </div>
+      <div id="tl-day-rows" style="margin-top:.5rem;"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="grid-2" style="gap:10px;">
+        <div class="metric"><div class="m-label">Total hours</div><div class="m-value c-blue" id="tl-total-hrs">0 hrs</div><div class="m-sub" id="tl-ot-note">—</div></div>
+        <div class="metric"><div class="m-label">Gross earnings</div><div class="m-value c-gold" id="tl-gross">$0</div><div class="m-sub">Before tax</div></div>
+        <div class="metric"><div class="m-label">Est. tax withheld</div><div class="m-value c-red" id="tl-tax">$0</div><div class="m-sub">WHV rate</div></div>
+        <div class="metric"><div class="m-label">Est. net pay</div><div class="m-value c-green" id="tl-net">$0</div><div class="m-sub">This week</div></div>
+        <div class="metric"><div class="m-label">Penalty bonus</div><div class="m-value c-purple" id="tl-bonus">$0</div><div class="m-sub">vs standard hours</div></div>
+        <div class="metric"><div class="m-label">Annualised gross</div><div class="m-value c-teal" id="tl-annual">$0</div><div class="m-sub">At this week's rate × 52</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:.8rem;"><div class="ibadge" style="background:var(--teal-dim);">📋</div>Day breakdown</div>
+        <div id="tl-breakdown"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: MILESTONES -->
+<div class="page-section container" id="tab-milestones">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Monthly savings</span><span class="is-value c-green" id="is-save-ms">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Weekly net</span><span class="is-value c-gold" id="is-wknet-ms">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Daily net</span><span class="is-value c-blue" id="is-daynet-ms">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
+  <div class="card" style="margin-bottom:1.2rem;">
+    <div class="card-title"><div class="ibadge" style="background:var(--green-dim);">🌏</div>Cost of Living Milestones</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:.8rem;">How many weeks of net savings to reach each goal — based on your current monthly savings from the Budget tab.</p>
+    <div class="field" style="max-width:300px;margin-bottom:0;">
+      <label>Savings already set aside (AUD)</label>
+      <div class="input-wrap"><span class="pfx">$</span><input type="number" id="ms-saved" value="0" min="0" step="100" oninput="updateMilestones()"></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;" id="ms-grid"></div>
+</div>
+
+<!-- TAB: TFN GUIDE -->
+<div class="page-section container" id="tab-tfn">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><div class="ibadge" style="background:var(--blue-dim);">🪪</div>Tax File Number (TFN) Guide</div>
+      <div class="tfn-warning">⚠️ Without a TFN, your employer is legally required to withhold tax at <strong>45%</strong> on every dollar you earn — regardless of your actual income. Apply as soon as possible after arriving.</div>
+      <div class="card-title" style="margin-bottom:.6rem;font-size:10px;">How to apply — step by step</div>
+      <div>
+        <div class="tfn-step">
+          <div class="tfn-num">1</div>
+          <div><div class="tfn-step-title">Check you're eligible</div><div class="tfn-step-desc">Working Holiday Visa holders (subclass 417 and 462) are eligible to apply for a TFN as soon as they arrive in Australia. You do not need to have a job first.</div></div>
+        </div>
+        <div class="tfn-step">
+          <div class="tfn-num">2</div>
+          <div><div class="tfn-step-title">Apply online via the ATO</div><div class="tfn-step-desc">Go to the ATO's online TFN application. You'll need your passport, visa details, and an Australian address. The application takes around 10 minutes.</div>
+            <a class="tfn-link" href="https://www.ato.gov.au/individuals-and-families/tax-file-number/apply-for-a-tfn/foreign-passport-holders-permanent-migrants-and-temporary-visitors-tfn-application" target="_blank" rel="noopener">→ ATO TFN application (foreign passport holders)</a>
+          </div>
+        </div>
+        <div class="tfn-step">
+          <div class="tfn-num">3</div>
+          <div><div class="tfn-step-title">Wait for your TFN (28 days)</div><div class="tfn-step-desc">The ATO will send your TFN by post to your Australian address. It typically arrives within 28 days. If you move, update your address at ato.gov.au.</div></div>
+        </div>
+        <div class="tfn-step">
+          <div class="tfn-num">4</div>
+          <div><div class="tfn-step-title">Give your TFN to your employer</div><div class="tfn-step-desc">Once received, provide it to payroll immediately. Your employer must then apply the correct Working Holiday Maker tax rate. They cannot withhold at 45% once a valid TFN is on file.</div></div>
+        </div>
+        <div class="tfn-step">
+          <div class="tfn-num">5</div>
+          <div><div class="tfn-step-title">Also give it to your super fund</div><div class="tfn-step-desc">Provide your TFN to your superannuation fund. Without it, your super contributions are taxed at 45% rather than 15%, which reduces your DASP payout when you leave Australia.</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:.8rem;"><div class="ibadge" style="background:var(--red-dim);">💸</div>Cost of not having a TFN</div>
+        <div class="field"><label>Your weekly gross earnings (AUD)</label>
+          <div class="input-wrap"><span class="pfx">$</span><input type="number" id="tfn-weekly" value="950" min="0" step="10" oninput="updateTfn()"></div>
+        </div>
+        <div class="grid-2" style="gap:10px;margin-top:.5rem;">
+          <div class="metric"><div class="m-label">Weekly tax with TFN</div><div class="m-value c-green" id="tfn-with">$0</div><div class="m-sub">WHV rate</div></div>
+          <div class="metric"><div class="m-label">Weekly tax without TFN</div><div class="m-value c-red" id="tfn-without">$0</div><div class="m-sub">45% flat rate</div></div>
+          <div class="metric"><div class="m-label">Weekly overpayment</div><div class="m-value c-red" id="tfn-diff">$0</div><div class="m-sub">Extra taken per week</div></div>
+          <div class="metric"><div class="m-label">Annual overpayment</div><div class="m-value c-red" id="tfn-annual">$0</div><div class="m-sub">If unresolved all year</div></div>
+        </div>
+        <div class="tfn-tip" style="margin-top:1rem;">✅ You can reclaim over-withheld tax at the end of the financial year by lodging a tax return — but it's better to avoid it by getting your TFN early.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:.6rem;"><div class="ibadge" style="background:var(--blue-dim);">❓</div>Common questions</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.8;">
+          <p style="margin-bottom:.6rem;"><strong style="color:var(--text);">Can I work before I have my TFN?</strong><br>Yes — but your employer must withhold at 45% until you provide it. Ask them to backdate the correct rate once your TFN arrives.</p>
+          <p style="margin-bottom:.6rem;"><strong style="color:var(--text);">Is my TFN the same as an ABN?</strong><br>No. A TFN is for employees. An ABN (Australian Business Number) is for sole traders and contractors. If a "employer" asks you to get an ABN instead of a TFN, this may indicate sham contracting — you may be entitled to employee rights.</p>
+          <p><strong style="color:var(--text);">Does my TFN expire?</strong><br>No. Your TFN is yours for life, even after you leave Australia. Keep it safe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: VISA COSTS -->
+<div class="page-section container" id="tab-visacost">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><div class="ibadge" style="background:var(--gold-dim);">💸</div>Upfront Costs Tracker</div>
+      <div class="info-box">The true cost of getting to Australia before you earn your first dollar. Edit any amount to match your actual expenses.</div>
+      <div id="vc-list"></div>
+      <hr class="divider" style="margin-top:.5rem;">
+      <div class="brow"><div class="brow-label"><strong>Total upfront cost</strong></div><div class="brow-val c-red" id="vc-total">$0</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="grid-2" style="gap:10px;">
+        <div class="metric"><div class="m-label">Total upfront (AUD)</div><div class="m-value c-red" id="vc-r-total">$0</div><div class="m-sub">All costs combined</div></div>
+        <div class="metric"><div class="m-label">Weeks to break even</div><div class="m-value c-gold" id="vc-r-weeks">0 wks</div><div class="m-sub">At your net weekly income</div></div>
+        <div class="metric"><div class="m-label">Months to break even</div><div class="m-value c-blue" id="vc-r-months">0 mo</div><div class="m-sub">At current savings rate</div></div>
+        <div class="metric"><div class="m-label">True first month income</div><div class="m-value c-green" id="vc-r-firstmo">$0</div><div class="m-sub">Net minus upfront costs</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:.8rem;"><div class="ibadge" style="background:var(--gold-dim);">📊</div>Cost breakdown</div>
+        <div id="vc-breakdown"></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:.6rem;"><div class="ibadge" style="background:var(--green-dim);">💡</div>Ways to reduce upfront costs</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.8;">
+          <p style="margin-bottom:.4rem;">• Apply for your WHV online — no agent needed (saves $200+)</p>
+          <p style="margin-bottom:.4rem;">• Use a travel card (Wise, Revolut) to avoid airport exchange fees</p>
+          <p style="margin-bottom:.4rem;">• Book flights 3+ months ahead for best prices</p>
+          <p style="margin-bottom:.4rem;">• Check if your home country has a reciprocal health agreement — you may not need OVHC</p>
+          <p>• Arrive with a flatmate plan — sharing from day 1 halves your bond cost</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: BUDGET SNAPSHOT -->
+<div class="page-section container" id="tab-snapshot">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><div class="ibadge" style="background:var(--purple-dim);">📸</div>Export your budget</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Generate a shareable image of your complete budget summary — perfect for sending to friends, saving for reference, or posting in WHV communities.</p>
+      <div class="field"><label>Your name / label (optional)</label>
+        <div class="input-wrap"><input type="text" id="snap-name" placeholder="e.g. My Sydney Budget 2025" class="no-pfx" style="padding-left:12px;height:40px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .15s;" oninput="renderSnapshot()"></div>
+      </div>
+      <div class="field"><label>Accent colour</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;" id="snap-colors">
+          <button class="city-btn active" data-color="#d4a843" onclick="setSnapColor(this,'#d4a843')">Gold</button>
+          <button class="city-btn" data-color="#3fb950" onclick="setSnapColor(this,'#3fb950')">Green</button>
+          <button class="city-btn" data-color="#58a6ff" onclick="setSnapColor(this,'#58a6ff')">Blue</button>
+          <button class="city-btn" data-color="#a78bfa" onclick="setSnapColor(this,'#a78bfa')">Purple</button>
+          <button class="city-btn" data-color="#f85149" onclick="setSnapColor(this,'#f85149')">Red</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:1rem;">
+        <button class="snap-btn" onclick="downloadSnapshot()">⬇ Download PNG</button>
+        <button class="snap-btn" style="background:var(--bg3);color:var(--text);border:1px solid var(--border);" onclick="copyShareUrl()">🔗 Copy share link</button>
+      </div>
+    </div>
+    <div>
+      <div class="snap-preview">
+        <div id="snapshot-card"></div>
+      </div>
+      <p style="font-size:11px;color:var(--text3);margin-top:8px;text-align:center;">Preview updates live as you change your budget</p>
+    </div>
+  </div>
+</div>
+
 <!-- AD BOTTOM -->
 <div class="ad-slot" id="ad-bottom" style="display:none;margin-top:1rem;">
   <div class="ad-inner"><div class="ad-label">Advertisement</div>
@@ -918,6 +1251,11 @@ function updateAll(){
   document.getElementById('tr-result-sub').textContent=trDiff>=0?'The ATO owes you this':'Pay this when you lodge';
 
   buildShareUrl();
+  updatePayslip();
+  updateMilestones();
+  updateTfn();
+  updateVcCosts();
+  renderSnapshot();
 }
 
 // ── SHARE URL ──
@@ -993,6 +1331,438 @@ document.querySelectorAll('.main-tab').forEach(tab=>{
   });
 });
 
+// ── PAYSLIP CHECK ──
+let psPeriod='weekly', psTfn=true;
+
+document.querySelectorAll('#ps-period-toggle .toggle-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#ps-period-toggle .toggle-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); psPeriod=btn.dataset.psperiod; updatePayslip();
+  });
+});
+document.querySelectorAll('#ps-tfn-toggle .toggle-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#ps-tfn-toggle .toggle-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); psTfn=btn.dataset.tfn==='yes'; updatePayslip();
+  });
+});
+
+function updatePayslip(){
+  const gross=parseFloat(document.getElementById('ps-gross').value)||0;
+  const withheld=parseFloat(document.getElementById('ps-withheld').value)||0;
+  const periods={weekly:52,fortnightly:26,monthly:12};
+  const mult=periods[psPeriod]||52;
+  const annualised=gross*mult;
+  const correctAnnual=psTfn?calcTax(annualised)+(mlExempt?0:annualised*.02):annualised*.45;
+  const correctPeriod=correctAnnual/mult;
+  const diff=withheld-correctPeriod;
+  const absDiff=Math.abs(diff);
+
+  document.getElementById('ps-r-gross').textContent=fmt(gross);
+  document.getElementById('ps-r-annual').textContent='~'+fmt(annualised)+' annualised';
+  document.getElementById('ps-r-withheld').textContent=fmt(withheld);
+  document.getElementById('ps-r-correct').textContent=fmt(correctPeriod);
+  document.getElementById('ps-r-diff').textContent=(diff>=0?'+':'-')+fmt(absDiff);
+
+  const diffEl=document.getElementById('ps-r-diff');
+  const subEl=document.getElementById('ps-r-diff-sub');
+  let verdict='';
+
+  if(gross===0){
+    diffEl.textContent='—'; diffEl.className='m-value'; subEl.textContent='Enter payslip figures';
+    document.getElementById('ps-verdict').innerHTML=''; return;
+  }
+  if(Math.abs(diff)<1){
+    diffEl.className='m-value c-green'; subEl.textContent='Spot on';
+    verdict=`<div class="ps-result ps-status-ok"><div class="ps-icon">✅</div><div><div class="ps-title">Tax looks correct</div><div class="ps-desc">Your employer withheld ${fmt(withheld)}, which matches the ATO WHV rate of ${fmt(correctPeriod)} for this pay period. No action needed.</div></div></div>`;
+  } else if(diff>0){
+    diffEl.className='m-value c-blue'; subEl.textContent='Over-withheld';
+    verdict=`<div class="ps-result ps-status-over"><div class="ps-icon">💙</div><div><div class="ps-title">You've been over-withheld by ${fmt(absDiff)}</div><div class="ps-desc">Your employer took ${fmt(diff)} more than required. You'll receive this back as a refund when you lodge your tax return. Set this aside — it's yours.</div></div></div>`;
+  } else {
+    diffEl.className='m-value c-red'; subEl.textContent='Under-withheld';
+    verdict=`<div class="ps-result ps-status-under"><div class="ps-icon">⚠️</div><div><div class="ps-title">You've been under-withheld by ${fmt(absDiff)}</div><div class="ps-desc">Your employer only took ${fmt(withheld)} but should have taken ${fmt(correctPeriod)}. You'll owe ${fmt(absDiff)} extra at tax return time. Set aside ${fmt(absDiff)} per ${psPeriod} pay to cover it.</div></div></div>`;
+  }
+  document.getElementById('ps-verdict').innerHTML=verdict;
+
+  // update income summary
+  const gross2=annualGross(), tax2=calcTax(gross2), net2=gross2-tax2-(mlExempt?0:gross2*.02);
+  const el1=document.getElementById('is-gross-payslip'); if(el1)el1.textContent=fmt(gross2);
+  const el2=document.getElementById('is-wktax-payslip'); if(el2)el2.textContent=fmt(tax2/52);
+  const el3=document.getElementById('is-wknet-payslip'); if(el3)el3.textContent=fmt(net2/52);
+}
+
+// ── HOURS LOG ──
+const DAYS_OF_WEEK=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const DAY_TYPE_MULT={
+  hospitality:[1,1,1,1,1,1.25,1.5],
+  retail:     [1,1,1,1,1,1.25,1.5],
+  fastfood:   [1,1,1,1,1,1.25,1.5],
+  farm:       [1,1,1,1,1,1.1,1.1],
+};
+const DAY_LABELS=['Weekday','Weekday','Weekday','Weekday','Weekday','Saturday','Sunday'];
+const DAY_CLASSES=['type-weekday','type-weekday','type-weekday','type-weekday','type-weekday','type-saturday','type-sunday'];
+
+function buildDayRows(){
+  const wrap=document.getElementById('tl-day-rows');
+  wrap.innerHTML='';
+  DAYS_OF_WEEK.forEach((day,i)=>{
+    const row=document.createElement('div');
+    row.className='day-row';
+    const isPH=i<5;
+    row.innerHTML=`
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span class="day-label">${day}</span>
+        <span class="day-type ${DAY_CLASSES[i]}" id="tl-dtype-${i}">${DAY_LABELS[i]}</span>
+      </div>
+      <input type="number" class="tl-hrs-input" id="tl-hrs-${i}" value="0" min="0" max="24" step="0.5" oninput="updateTimelog()">
+      <div class="day-earn" id="tl-earn-${i}">$0</div>
+      ${isPH?`<button class="ph-toggle" id="tl-ph-${i}" onclick="togglePH(${i})">Public holiday</button>`:'<div></div>'}`;
+    wrap.appendChild(row);
+  });
+  // Set today's week
+  const today=new Date();
+  const mon=new Date(today);
+  mon.setDate(today.getDate()-((today.getDay()+6)%7));
+  document.getElementById('tl-week-start').value=mon.toISOString().split('T')[0];
+}
+
+const phDays=new Set();
+function togglePH(i){
+  const btn=document.getElementById('tl-ph-'+i);
+  if(phDays.has(i)){phDays.delete(i);btn.classList.remove('active');}
+  else{phDays.add(i);btn.classList.add('active');}
+  updateTimelog();
+}
+
+const PH_MULT={hospitality:2.25,retail:2.25,fastfood:2.5,farm:2.0};
+
+function updateTimelog(){
+  const award=document.getElementById('tl-award').value;
+  const baseRate=v('income-input')||0;
+  const mults=DAY_TYPE_MULT[award]||DAY_TYPE_MULT.hospitality;
+  let totalHrs=0, totalGross=0, stdGross=0;
+  const breakdown=[];
+
+  DAYS_OF_WEEK.forEach((day,i)=>{
+    const hrs=parseFloat(document.getElementById('tl-hrs-'+i).value)||0;
+    const isPH=phDays.has(i);
+    const mult=isPH?PH_MULT[award]:mults[i];
+    const rate=baseRate*mult;
+    const earn=hrs*rate;
+    const stdEarn=hrs*baseRate;
+    totalHrs+=hrs; totalGross+=earn; stdGross+=stdEarn;
+    document.getElementById('tl-earn-'+i).textContent=fmt(earn);
+    const dtype=document.getElementById('tl-dtype-'+i);
+    if(isPH){dtype.textContent='Public holiday';dtype.className='day-type type-holiday';}
+    else{dtype.textContent=DAY_LABELS[i];dtype.className='day-type '+DAY_CLASSES[i];}
+    if(hrs>0) breakdown.push({day,hrs,mult,rate,earn});
+  });
+
+  const annualised=totalGross*52;
+  const weekTax=calcTax(annualised)/52;
+  const weekNet=totalGross-weekTax;
+  const bonus=totalGross-stdGross;
+
+  document.getElementById('tl-total-hrs').textContent=totalHrs.toFixed(1)+' hrs';
+  document.getElementById('tl-ot-note').textContent=totalHrs>38?`${(totalHrs-38).toFixed(1)} hrs overtime`:'Standard week';
+  document.getElementById('tl-gross').textContent=fmt(totalGross);
+  document.getElementById('tl-tax').textContent=fmt(weekTax);
+  document.getElementById('tl-net').textContent=fmt(weekNet);
+  document.getElementById('tl-bonus').textContent=fmt(bonus);
+  document.getElementById('tl-annual').textContent=fmt(annualised);
+
+  // income summary
+  const el1=document.getElementById('is-rate-timelog');if(el1)el1.textContent='$'+baseRate.toFixed(2)+'/hr';
+  const el2=document.getElementById('is-std-timelog');if(el2)el2.textContent=fmt(baseRate*38);
+
+  // breakdown table
+  const bd=document.getElementById('tl-breakdown');
+  if(breakdown.length===0){bd.innerHTML='<p style="font-size:13px;color:var(--text3);text-align:center;padding:.5rem;">Enter hours above to see breakdown.</p>';return;}
+  bd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;">
+    <thead><tr style="background:var(--bg3);">
+      <th style="padding:6px 10px;text-align:left;color:var(--text3);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--border);">Day</th>
+      <th style="padding:6px 10px;text-align:right;color:var(--text3);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--border);">Hours</th>
+      <th style="padding:6px 10px;text-align:right;color:var(--text3);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--border);">Rate</th>
+      <th style="padding:6px 10px;text-align:right;color:var(--text3);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--border);">Multiplier</th>
+      <th style="padding:6px 10px;text-align:right;color:var(--text3);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--border);">Earned</th>
+    </tr></thead>
+    <tbody>${breakdown.map(r=>`<tr>
+      <td style="padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);">${r.day}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);text-align:right;">${r.hrs.toFixed(1)}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);text-align:right;">$${r.rate.toFixed(2)}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid var(--border);color:var(--gold);text-align:right;font-weight:500;">${r.mult.toFixed(2)}×</td>
+      <td style="padding:8px 10px;border-bottom:1px solid var(--border);color:var(--gold);text-align:right;font-weight:500;">${fmt(r.earn)}</td>
+    </tr>`).join('')}
+    <tr style="background:var(--bg3);">
+      <td colspan="4" style="padding:8px 10px;font-weight:500;color:var(--text);">Total</td>
+      <td style="padding:8px 10px;font-weight:600;color:var(--gold);text-align:right;">${fmt(totalGross)}</td>
+    </tr></tbody></table>`;
+}
+
+
+// ── MILESTONES ──
+const MILESTONES=[
+  {emoji:'✈️', name:'Flight home (UK/Europe)',   cost:1800},
+  {emoji:'🏝', name:'Bali trip (1 week)',         cost:1200},
+  {emoji:'🤿', name:'Great Barrier Reef trip',    cost:600},
+  {emoji:'🦘', name:'East Coast road trip',       cost:1500},
+  {emoji:'🏕', name:'Week in Cairns',             cost:900},
+  {emoji:'🏍', name:'Buy a motorbike',            cost:3500},
+  {emoji:'🚗', name:'Buy a car',                  cost:5000},
+  {emoji:'🎓', name:'TEFL/Dive course',           cost:800},
+  {emoji:'🏄', name:'Surf lessons (1 week)',       cost:300},
+  {emoji:'🎭', name:'Sydney NYE experience',       cost:250},
+  {emoji:'🍷', name:'Barossa Valley wine tour',   cost:180},
+  {emoji:'🧗', name:'Skydiving jump',             cost:350},
+  {emoji:'🛶', name:'Kakadu National Park trip',  cost:700},
+  {emoji:'🏔', name:'Snowy Mountains ski week',   cost:1100},
+  {emoji:'💰', name:'Emergency fund (1 month)',   cost:0},
+  {emoji:'🏠', name:'Bond + 1st month rent',      cost:0},
+];
+
+function updateMilestones(){
+  const gross=annualGross(), tax=calcTax(gross), ml2=mlExempt?0:gross*.02;
+  const annualNet=gross-tax-ml2;
+  const monthlyNet=annualNet/12;
+  const monthlyExp=totalMonthlyExp();
+  const monthlySave=Math.max(0,monthlyNet-monthlyExp);
+  const weeklySave=monthlySave/4.33;
+  const alreadySaved=parseFloat(document.getElementById('ms-saved').value)||0;
+
+  // update income summary
+  const e1=document.getElementById('is-save-ms');if(e1)e1.textContent=fmt(monthlySave);
+  const e2=document.getElementById('is-wknet-ms');if(e2)e2.textContent=fmt(annualNet/52);
+  const e3=document.getElementById('is-daynet-ms');if(e3)e3.textContent=fmt(annualNet/365);
+
+  // dynamic costs
+  const dynMilestones=MILESTONES.map((m,i)=>{
+    let cost=m.cost;
+    if(i===14)cost=monthlyExp||2000;
+    if(i===15)cost=(parseFloat(document.getElementById('exp-rent').value)||1200)*3;
+    return {...m,cost};
+  });
+
+  const grid=document.getElementById('ms-grid');
+  grid.innerHTML=dynMilestones.map(m=>{
+    const remaining=Math.max(0,m.cost-alreadySaved);
+    const weeks=weeklySave>0?remaining/weeklySave:Infinity;
+    const months=weeks/4.33;
+    const progPct=m.cost>0?Math.min(alreadySaved/m.cost*100,100):100;
+    const color=weeks<=4?'var(--green)':weeks<=12?'var(--gold)':'var(--blue)';
+    const timeLabel=remaining===0?'Reached! 🎉':weeks===Infinity?'Save more first':weeks<4?`${weeks.toFixed(1)} weeks`:weeks<52?`${months.toFixed(1)} months`:`${(months/12).toFixed(1)} years`;
+    return `<div class="milestone-card">
+      <span class="ms-emoji">${m.emoji}</span>
+      <div class="ms-name">${m.name}</div>
+      <div class="ms-cost">AUD ${fmt(m.cost)}</div>
+      <div class="ms-weeks" style="color:${color};">${timeLabel}</div>
+      <div class="ms-bar-bg"><div class="ms-bar-fill" style="width:${progPct.toFixed(1)}%;background:${color};"></div></div>
+      <div class="ms-sub">${remaining>0?fmt(remaining)+' still needed':fmt(m.cost)+' covered'}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── TFN GUIDE ──
+function updateTfn(){
+  const weeklyGross=parseFloat(document.getElementById('tfn-weekly').value)||0;
+  const annualised=weeklyGross*52;
+  const withTfn=calcTax(annualised)/52;
+  const withoutTfn=annualised*.45/52;
+  const diff=withoutTfn-withTfn;
+  document.getElementById('tfn-with').textContent=fmt(withTfn);
+  document.getElementById('tfn-without').textContent=fmt(withoutTfn);
+  document.getElementById('tfn-diff').textContent=fmt(diff);
+  document.getElementById('tfn-annual').textContent=fmt(diff*52);
+}
+
+// ── VISA COSTS ──
+const VC_ITEMS=[
+  {id:'whv-fee',   icon:'🛂',color:'#58a6ff',label:'WHV application fee',      hint:'Subclass 417/462',           default:635},
+  {id:'flights',   icon:'✈️',color:'#a78bfa',label:'Flights to Australia',      hint:'Return or one-way',          default:1400},
+  {id:'insurance', icon:'🏥',color:'#f85149',label:'OVHC health insurance',     hint:'Overseas Visitor Health Cover',default:600},
+  {id:'police',    icon:'📋',color:'#d4a843',label:'Police check / background', hint:'From home country',          default:80},
+  {id:'passport',  icon:'📘',color:'#34d399',label:'Passport renewal',          hint:'If needed',                  default:0},
+  {id:'vaccinations',icon:'💉',color:'#e891a0',label:'Vaccinations / medical',  hint:'Pre-departure health',       default:150},
+  {id:'travel-card',icon:'💳',color:'#60a5fa',label:'Travel card / forex',      hint:'Wise, Revolut setup',        default:50},
+  {id:'bond',      icon:'🏠',color:'#fbbf24',label:'Rental bond',               hint:'Typically 4 weeks rent',     default:1800},
+  {id:'first-rent',icon:'🗓',color:'#fbbf24',label:'First month rent',          hint:'Before first paycheck',      default:1200},
+  {id:'sim',       icon:'📱',color:'#a3e635',label:'SIM card & phone plan',     hint:'On arrival',                 default:30},
+  {id:'luggage',   icon:'🧳',color:'#8b949e',label:'Extra luggage / shipping',  hint:'If sending gear ahead',      default:0},
+  {id:'vc-other',  icon:'📦',color:'#6e7681',label:'Other upfront costs',       hint:'Misc. pre-departure',        default:200},
+];
+
+function buildVcList(){
+  const wrap=document.getElementById('vc-list');
+  if(!wrap)return;
+  wrap.innerHTML='';
+  VC_ITEMS.forEach(item=>{
+    const row=document.createElement('div');
+    row.className='vc-row';
+    row.innerHTML=`
+      <div class="vc-icon" style="background:${item.color}22;">${item.icon}</div>
+      <div class="vc-name">${item.label}<small>${item.hint}</small></div>
+      <div style="position:relative;">
+        <span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--text3);pointer-events:none;">$</span>
+        <input type="number" id="vc-${item.id}" class="vc-input" value="${item.default}" min="0" step="1" oninput="updateVcCosts()">
+      </div>`;
+    wrap.appendChild(row);
+  });
+}
+
+function updateVcCosts(){
+  let total=0;
+  const breakdown=[];
+  VC_ITEMS.forEach(item=>{
+    const el=document.getElementById('vc-'+item.id);
+    const val=el?parseFloat(el.value)||0:0;
+    total+=val;
+    if(val>0) breakdown.push({...item,val});
+  });
+
+  const gross=annualGross(),tax=calcTax(gross),ml2=mlExempt?0:gross*.02;
+  const annualNet=gross-tax-ml2;
+  const weeklyNet=annualNet/52;
+  const monthlyNet=annualNet/12;
+  const monthlyExp=totalMonthlyExp();
+  const monthlySave=Math.max(0,monthlyNet-monthlyExp);
+  const weeksToBreakEven=weeklyNet>0?total/weeklyNet:0;
+  const monthsToBreakEven=monthlySave>0?total/monthlySave:0;
+  const firstMonthNet=monthlyNet-total;
+
+  document.getElementById('vc-total').textContent=fmt(total);
+  document.getElementById('vc-r-total').textContent=fmt(total);
+  document.getElementById('vc-r-weeks').textContent=weeksToBreakEven>0?weeksToBreakEven.toFixed(1)+' wks':'—';
+  document.getElementById('vc-r-months').textContent=monthsToBreakEven>0?monthsToBreakEven.toFixed(1)+' mo':'—';
+  document.getElementById('vc-r-firstmo').textContent=fmt(firstMonthNet);
+  document.getElementById('vc-r-firstmo').className='m-value '+(firstMonthNet>=0?'c-green':'c-red');
+
+  // Breakdown bar chart
+  const bdEl=document.getElementById('vc-breakdown');
+  if(!bdEl)return;
+  bdEl.innerHTML=breakdown.map(item=>{
+    const pct=total>0?item.val/total*100:0;
+    return `<div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;">
+        <span style="color:var(--text2);">${item.icon} ${item.label}</span>
+        <span style="color:var(--text);font-weight:500;font-variant-numeric:tabular-nums;">${fmt(item.val)} <span style="color:var(--text3);font-weight:400;">(${pct.toFixed(0)}%)</span></span>
+      </div>
+      <div style="height:6px;background:var(--bg4);border-radius:99px;overflow:hidden;">
+        <div style="height:100%;width:${pct.toFixed(1)}%;background:${item.color};border-radius:99px;transition:width .4s;"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── BUDGET SNAPSHOT ──
+let snapColor='#d4a843';
+
+function setSnapColor(btn,color){
+  document.querySelectorAll('#snap-colors .city-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  snapColor=color;
+  renderSnapshot();
+}
+
+function renderSnapshot(){
+  const gross=annualGross(),tax=calcTax(gross),ml2=mlExempt?0:gross*.02;
+  const annualNet=gross-tax-ml2,monthlyNet=annualNet/12;
+  const monthlyExp=totalMonthlyExp(),monthlySave=monthlyNet-monthlyExp;
+  const savePct=monthlyNet>0?monthlySave/monthlyNet*100:0;
+  const eff=gross>0?tax/gross*100:0;
+  const label=document.getElementById('snap-name').value||'My OzBudget';
+  const date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
+  const isDark=document.documentElement.getAttribute('data-theme')!=='light';
+  const bg=isDark?'#161b22':'#ffffff';
+  const bg2=isDark?'#21262d':'#f0f2f5';
+  const textCol=isDark?'#e6edf3':'#1a1f2e';
+  const text2=isDark?'#8b949e':'#57606a';
+  const borderCol=isDark?'rgba(255,255,255,0.1)':'rgba(0,0,0,0.1)';
+
+  const rows=EXPENSES_CONFIG.map(e=>{
+    const val=parseFloat(document.getElementById('exp-'+e.id).value)||0;
+    if(val===0)return '';
+    return `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid ${borderCol};font-size:12px;">
+      <span style="color:${text2};">${e.icon} ${e.label}</span>
+      <span style="color:${textCol};font-variant-numeric:tabular-nums;">${fmt(val)}/mo</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('snapshot-card').innerHTML=`
+    <div style="background:${bg};border-radius:12px;padding:1.5rem;font-family:'DM Sans',sans-serif;max-width:480px;border:1px solid ${borderCol};">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;">
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${text2};margin-bottom:4px;">OzBudget WHV</div>
+          <div style="font-size:1.1rem;font-weight:600;color:${textCol};">${label}</div>
+          <div style="font-size:11px;color:${text2};margin-top:2px;">${date}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;color:${text2};margin-bottom:2px;">Monthly savings</div>
+          <div style="font-size:1.8rem;font-weight:600;color:${snapColor};font-variant-numeric:tabular-nums;">${fmt(monthlySave)}</div>
+          <div style="font-size:11px;color:${text2};">${savePct.toFixed(0)}% of net income</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:1.2rem;">
+        <div style="background:${bg2};border-radius:8px;padding:.7rem;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:${text2};margin-bottom:3px;">Annual gross</div>
+          <div style="font-size:1rem;font-weight:500;color:${snapColor};font-variant-numeric:tabular-nums;">${fmt(gross)}</div>
+        </div>
+        <div style="background:${bg2};border-radius:8px;padding:.7rem;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:${text2};margin-bottom:3px;">Tax (${eff.toFixed(1)}%)</div>
+          <div style="font-size:1rem;font-weight:500;color:#f85149;font-variant-numeric:tabular-nums;">${fmt(tax)}</div>
+        </div>
+        <div style="background:${bg2};border-radius:8px;padding:.7rem;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:${text2};margin-bottom:3px;">Annual net</div>
+          <div style="font-size:1rem;font-weight:500;color:#3fb950;font-variant-numeric:tabular-nums;">${fmt(annualNet)}</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${text2};margin-bottom:.5rem;">Monthly expenses — ${fmt(monthlyExp)}</div>
+        ${rows}
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:.8rem;border-top:1px solid ${borderCol};">
+        <span style="font-size:11px;color:${text2};">ozbudget.netlify.app</span>
+        <span style="font-size:11px;color:${text2};">🇦🇺 ATO 2024–25 WHV rates</span>
+      </div>
+    </div>`;
+}
+
+function downloadSnapshot(){
+  const node=document.getElementById('snapshot-card').firstElementChild;
+  if(!node){alert('No snapshot to download.');return;}
+  // Use html-to-image via CDN
+  const script=document.createElement('script');
+  script.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  script.onload=()=>{
+    html2canvas(node,{backgroundColor:null,scale:2,useCORS:true,logging:false}).then(canvas=>{
+      const a=document.createElement('a');
+      a.download='ozbudget-snapshot.png';
+      a.href=canvas.toDataURL('image/png');
+      a.click();
+    });
+  };
+  document.head.appendChild(script);
+}
+
+// ── THEME ──
+function toggleTheme(){
+  const isLight=document.documentElement.getAttribute('data-theme')==='light';
+  const next=isLight?'dark':'light';
+  applyTheme(next);
+  localStorage.setItem('oz_theme',next);
+}
+function applyTheme(theme){
+  const btn=document.getElementById('theme-btn');
+  if(theme==='light'){
+    document.documentElement.setAttribute('data-theme','light');
+    if(btn)btn.textContent='🌙';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    if(btn)btn.textContent='☀️';
+  }
+}
+
 // ── COOKIES ──
 function acceptCookies(){localStorage.setItem('oz_consent','accepted');hideBanner();loadAdsense();}
 function declineCookies(){localStorage.setItem('oz_consent','declined');hideBanner();}
@@ -1003,7 +1773,14 @@ function loadAdsense(){
 
 // ── INIT ──
 window.addEventListener('DOMContentLoaded',()=>{
+  const savedTheme=localStorage.getItem('oz_theme')||'dark';
+  applyTheme(savedTheme);
+  buildDayRows();
+  buildVcList();
+  document.getElementById('tl-award').addEventListener('change',updateTimelog);
+  document.getElementById('tl-week-start').addEventListener('change',updateTimelog);
   loadFromUrl();updateAll();
+  renderSnapshot();
   const consent=localStorage.getItem('oz_consent');
   if(!consent)document.getElementById('cookie-banner').style.display='flex';
   else if(consent==='accepted')loadAdsense();
