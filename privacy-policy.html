@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — OzBudget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d1117; --bg2: #161b22; --bg3: #21262d;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+    --text: #e6edf3; --text2: #8b949e; --text3: #6e7681;
+    --gold: #d4a843; --gold-dim: rgba(212,168,67,0.12);
+    --radius: 12px; --radius-sm: 8px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,17,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: -0.02em; text-decoration: none; }
+  .logo span { color: var(--text2); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; margin-left: 10px; font-weight: 300; }
+  nav a { font-size: 13px; color: var(--text2); text-decoration: none; margin-left: 1.5rem; transition: color 0.15s; }
+  nav a:hover { color: var(--text); }
+  nav a.active { color: var(--gold); }
+
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 99px;
+    background: var(--gold-dim); color: var(--gold);
+    border: 1px solid rgba(212,168,67,0.25);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 { font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.15; margin-bottom: 0.5rem; }
+  .meta { font-size: 13px; color: var(--text3); margin-bottom: 2.5rem; }
+
+  .prose h2 {
+    font-size: 1.1rem; font-weight: 600; color: var(--text);
+    margin: 2rem 0 0.6rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .prose p { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 0.9rem; }
+  .prose ul { padding-left: 1.4rem; margin-bottom: 0.9rem; }
+  .prose ul li { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 0.3rem; }
+  .prose a { color: var(--gold); text-decoration: none; }
+  .prose a:hover { text-decoration: underline; }
+
+  .info-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+  }
+  .info-box p { margin: 0; font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+  footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">OzBudget <span>Working Holiday Calculator</span></a>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="privacy-policy.html" class="active">Privacy</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+  <div class="page-tag">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: January 2025 &nbsp;·&nbsp; OzBudget</p>
+
+  <div class="info-box">
+    <p>OzBudget is a free calculator tool. We do not collect, store, or sell any personal income or financial data you enter. All calculations happen entirely in your browser.</p>
+  </div>
+
+  <div class="prose">
+
+    <h2>1. Who we are</h2>
+    <p>OzBudget ("we", "us", "our") is a free online tool that helps Working Holiday Visa holders in Australia estimate their after-tax income and monthly budget. This Privacy Policy explains how we handle information when you visit <strong>ozbudget.netlify.app</strong> (or any custom domain we use).</p>
+
+    <h2>2. Information we collect</h2>
+    <p>We do not collect any personally identifiable information directly. However, the following data may be collected automatically:</p>
+    <ul>
+      <li><strong>Usage data</strong> — pages visited, time on site, browser type, device type, and referring URL, collected via Google Analytics (if enabled).</li>
+      <li><strong>Cookie data</strong> — small files placed on your device by Google AdSense and/or Google Analytics to serve relevant ads and analyse traffic.</li>
+      <li><strong>IP address</strong> — collected by our hosting provider (Netlify) and by Google's advertising infrastructure for fraud prevention and ad personalisation.</li>
+    </ul>
+    <p>The financial figures you enter into the calculator (income, expenses, etc.) are processed entirely in your browser and are <strong>never transmitted to our servers</strong>.</p>
+
+    <h2>3. Cookies</h2>
+    <p>We use the following types of cookies:</p>
+    <ul>
+      <li><strong>Essential cookies</strong> — stores your cookie consent preference (key: <code>oz_cookie_consent</code>) in your browser's local storage. No expiry, never sent to a server.</li>
+      <li><strong>Analytics cookies</strong> (only with consent) — Google Analytics uses cookies such as <code>_ga</code> and <code>_gid</code> to distinguish users and sessions.</li>
+      <li><strong>Advertising cookies</strong> (only with consent) — Google AdSense uses cookies to show personalised ads based on your browsing history across the web.</li>
+    </ul>
+    <p>You can manage or delete cookies at any time through your browser settings. Withdrawing consent will not affect any calculations you have already made.</p>
+
+    <h2>4. Google AdSense &amp; advertising</h2>
+    <p>We use Google AdSense to display advertisements. Google, as a third-party vendor, uses cookies to serve ads based on your prior visits to our website and other sites on the internet. Google's use of advertising cookies enables it and its partners to serve ads based on your visits. You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+    <p>Advertising cookies are only loaded after you give consent via the cookie banner.</p>
+
+    <h2>5. Third-party services</h2>
+    <ul>
+      <li><strong>Google Fonts</strong> — fonts are loaded from Google's servers. Google may collect anonymised usage data.</li>
+      <li><strong>Netlify</strong> — our hosting provider. Netlify collects server access logs including IP addresses for security and performance purposes. See <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify's Privacy Policy</a>.</li>
+    </ul>
+
+    <h2>6. Your rights</h2>
+    <p>Depending on your jurisdiction, you may have rights including access, correction, deletion, and objection to processing of your personal data. Since we do not store personal data ourselves, most requests should be directed to Google (for advertising/analytics data) or Netlify (for access logs).</p>
+    <p>To withdraw cookie consent, clear your browser's local storage or use your browser's cookie management tools.</p>
+
+    <h2>7. Children's privacy</h2>
+    <p>OzBudget is not directed at children under the age of 13. We do not knowingly collect data from children.</p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. The "last updated" date at the top of this page will reflect any changes. Continued use of the site after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>9. Contact</h2>
+    <p>If you have questions about this Privacy Policy, please visit our <a href="about.html">About page</a> for contact details.</p>
+
+  </div>
+</div>
+
+<footer>
+  <strong style="color:var(--text2);">OzBudget</strong> — Free Working Holiday Visa tax calculator for Australia.<br>
+  <a href="index.html" style="color:var(--gold);text-decoration:none;">← Back to calculator</a>
+</footer>
+
+</body>
+</html>

@@ -7,6 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- ── GOOGLE ADSENSE ── -->
+<!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID once approved -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -381,12 +384,43 @@
 
 <header>
   <div class="logo">OzBudget <span>Working Holiday Calculator</span></div>
-  <div class="header-badge">🇦🇺 2024–25 ATO Rates</div>
+  <nav style="display:flex;align-items:center;gap:1.5rem;">
+    <a href="about.html" style="font-size:13px;color:var(--text2);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">About</a>
+    <a href="privacy-policy.html" style="font-size:13px;color:var(--text2);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text2)'">Privacy</a>
+    <div class="header-badge">🇦🇺 2024–25 ATO Rates</div>
+  </nav>
 </header>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161b22;border-top:1px solid rgba(255,255,255,0.1);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+  <div style="flex:1;min-width:260px;">
+    <p style="font-size:13px;color:#e6edf3;margin-bottom:4px;font-weight:500;">🍪 We use cookies</p>
+    <p style="font-size:12px;color:#8b949e;line-height:1.6;">We use cookies and similar technologies to show personalised ads (via Google AdSense), analyse traffic, and improve your experience. Read our <a href="privacy-policy.html" style="color:#d4a843;text-decoration:none;">Privacy Policy</a> for details.</p>
+  </div>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="declineCookies()" style="height:36px;padding:0 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.14);background:transparent;color:#8b949e;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">Decline</button>
+    <button onclick="acceptCookies()" style="height:36px;padding:0 18px;border-radius:8px;border:none;background:#d4a843;color:#0d1117;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;">Accept all</button>
+  </div>
+</div>
 
 <div class="hero">
   <h1>Know your <em>real</em> take-home<br>in Australia</h1>
   <p>Calculate your after-tax income and track expenses — built specifically for Working Holiday Visa holders (subclass 417 &amp; 462).</p>
+</div>
+
+<!-- ── AD UNIT 1: Below hero, above calculator ── -->
+<div id="ad-top" style="display:none; max-width:1100px; margin:0 auto 0; padding:0 1.5rem 1rem;">
+  <div style="border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; background:#161b22; text-align:center; padding:4px 0;">
+    <p style="font-size:10px; color:#6e7681; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; padding-top:6px;">Advertisement</p>
+    <!-- Replace data-ad-client and data-ad-slot with your own values from AdSense -->
+    <ins class="adsbygoogle"
+      style="display:block;"
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="XXXXXXXXXX"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </div>
 
 <div class="container">
@@ -576,6 +610,21 @@
   </div>
 
 </div><!-- /container -->
+
+<!-- ── AD UNIT 2: Below calculator, above footer ── -->
+<div id="ad-bottom" style="display:none; max-width:1100px; margin:0 auto; padding:0 1.5rem 2rem;">
+  <div style="border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; background:#161b22; text-align:center; padding:4px 0;">
+    <p style="font-size:10px; color:#6e7681; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; padding-top:6px;">Advertisement</p>
+    <!-- Replace data-ad-client and data-ad-slot with your own values from AdSense -->
+    <ins class="adsbygoogle"
+      style="display:block;"
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="XXXXXXXXXX"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
 
 <footer>
   <strong style="color:var(--text2);">OzBudget</strong> — Based on ATO 2024–25 Working Holiday Maker rates.<br>
@@ -802,6 +851,48 @@ document.getElementById('income-input').addEventListener('input', update);
 document.getElementById('hours-input').addEventListener('input', update);
 
 update();
+
+// ── COOKIE CONSENT ──
+function acceptCookies() {
+  localStorage.setItem('oz_cookie_consent', 'accepted');
+  hideBanner();
+  loadAdsense();
+}
+function declineCookies() {
+  localStorage.setItem('oz_cookie_consent', 'declined');
+  hideBanner();
+}
+function hideBanner() {
+  const b = document.getElementById('cookie-banner');
+  b.style.transition = 'opacity 0.3s, transform 0.3s';
+  b.style.opacity = '0';
+  b.style.transform = 'translateY(20px)';
+  setTimeout(() => b.style.display = 'none', 300);
+}
+function loadAdsense() {
+  // Uncomment the <script> tag in <head> and replace ca-pub-XXXXXXXXXXXXXXXX
+  // with your real publisher ID. Also update data-ad-slot in both <ins> tags.
+  // Then remove the display:none from #ad-top and #ad-bottom below, OR
+  // this function will show them automatically once AdSense is active:
+  const adTop = document.getElementById('ad-top');
+  const adBot = document.getElementById('ad-bottom');
+  if (adTop) adTop.style.display = 'block';
+  if (adBot) adBot.style.display = 'block';
+  // If adsbygoogle is already loaded (script tag uncommented in <head>), push ads:
+  if (window.adsbygoogle) {
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const consent = localStorage.getItem('oz_cookie_consent');
+  if (!consent) {
+    const banner = document.getElementById('cookie-banner');
+    banner.style.display = 'flex';
+  } else if (consent === 'accepted') {
+    loadAdsense();
+  }
+});
+
 </script>
 </body>
 </html>

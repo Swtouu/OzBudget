@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — OzBudget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d1117; --bg2: #161b22; --bg3: #21262d; --bg4: #2d333b;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+    --text: #e6edf3; --text2: #8b949e; --text3: #6e7681;
+    --gold: #d4a843; --gold-dim: rgba(212,168,67,0.12);
+    --green: #3fb950; --green-dim: rgba(63,185,80,0.12);
+    --blue: #58a6ff; --blue-dim: rgba(88,166,255,0.1);
+    --radius: 12px; --radius-sm: 8px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,17,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: -0.02em; text-decoration: none; }
+  .logo span { color: var(--text2); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; margin-left: 10px; font-weight: 300; }
+  nav a { font-size: 13px; color: var(--text2); text-decoration: none; margin-left: 1.5rem; transition: color 0.15s; }
+  nav a:hover { color: var(--text); }
+  nav a.active { color: var(--gold); }
+
+  .page-wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 99px;
+    background: var(--blue-dim); color: var(--blue);
+    border: 1px solid rgba(88,166,255,0.25);
+    margin-bottom: 1.2rem;
+  }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.15; margin-bottom: 0.5rem; }
+  .subtitle { font-size: 1rem; color: var(--text2); line-height: 1.7; margin-bottom: 2.5rem; max-width: 560px; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .feature-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .feature-card:hover { border-color: var(--border2); }
+  .f-icon { font-size: 1.4rem; margin-bottom: 0.7rem; display: block; }
+  .f-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .f-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+  .prose h2 { font-size: 1.1rem; font-weight: 600; margin: 2rem 0 0.6rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .prose p { font-size: 14px; color: var(--text2); line-height: 1.8; margin-bottom: 0.9rem; }
+  .prose a { color: var(--gold); text-decoration: none; }
+  .prose a:hover { text-decoration: underline; }
+
+  .disclaimer-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem; margin: 2rem 0;
+  }
+  .disclaimer-box p { font-size: 13px; color: var(--text2); line-height: 1.7; margin: 0; }
+
+  .cta-wrap { text-align: center; margin: 3rem 0 1rem; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold); color: #0d1117;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600;
+    padding: 0 28px; height: 44px; line-height: 44px;
+    border-radius: 99px; text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .cta-btn:hover { opacity: 0.88; }
+
+  .rate-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    margin: 1rem 0 1.5rem;
+  }
+  .rate-table th {
+    text-align: left; padding: 8px 12px;
+    background: var(--bg3); color: var(--text2);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .rate-table td {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .rate-table tr:last-child td { border-bottom: none; }
+  .rate-table td:last-child { color: var(--gold); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .rate-table tr:hover td { background: var(--bg3); }
+
+  footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">OzBudget <span>Working Holiday Calculator</span></a>
+  <nav>
+    <a href="about.html" class="active">About</a>
+    <a href="privacy-policy.html">Privacy</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+  <div class="page-tag">About</div>
+  <h1>Built for backpackers,<br>by a backpacker</h1>
+  <p class="subtitle">OzBudget was created to help Working Holiday Visa holders in Australia understand their real take-home pay and plan their finances — without needing to be a tax expert.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="f-icon">💰</span>
+      <div class="f-title">Accurate WHV tax rates</div>
+      <div class="f-desc">Uses the official ATO 2024–25 Working Holiday Maker brackets, not the resident tax table.</div>
+    </div>
+    <div class="feature-card">
+      <span class="f-icon">🧾</span>
+      <div class="f-title">Real expense tracking</div>
+      <div class="f-desc">Rent, food, utilities, transport — see exactly where your money goes each month.</div>
+    </div>
+    <div class="feature-card">
+      <span class="f-icon">🎯</span>
+      <div class="f-title">Savings projections</div>
+      <div class="f-desc">See how much you can save over 3, 6, 9, and 12 months at a glance.</div>
+    </div>
+    <div class="feature-card">
+      <span class="f-icon">🔒</span>
+      <div class="f-title">100% private</div>
+      <div class="f-desc">All calculations run in your browser. Your financial data is never sent anywhere.</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <h2>How the tax calculation works</h2>
+    <p>Working Holiday Visa holders (subclass 417 and 462) are taxed as non-residents under a special rate set by the ATO. Unlike Australian residents, there is no tax-free threshold — but the first $45,000 is taxed at only 15%, which is lower than the resident rate for that bracket.</p>
+    <p>The 2024–25 rates applied by this calculator are:</p>
+  </div>
+
+  <table class="rate-table">
+    <thead>
+      <tr>
+        <th>Taxable income</th>
+        <th>Tax rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>$0 – $45,000</td><td>15%</td></tr>
+      <tr><td>$45,001 – $135,000</td><td>32.5%</td></tr>
+      <tr><td>$135,001 – $190,000</td><td>37%</td></tr>
+      <tr><td>Over $190,000</td><td>45%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="prose">
+    <h2>Medicare Levy</h2>
+    <p>Most Working Holiday Makers are exempt from the 2% Medicare Levy because Australia has reciprocal health agreements with many countries (including the UK, Ireland, New Zealand, Belgium, Finland, Italy, Malta, the Netherlands, Norway, Slovenia, and Sweden). If your country is not on this list, you may need to pay it. The calculator lets you toggle this on or off.</p>
+
+    <h2>Superannuation</h2>
+    <p>As a WHV holder working in Australia, your employer is generally required to pay superannuation (currently 11.5% of your ordinary earnings) into a super fund on your behalf. This is on top of your gross pay and is not deducted from your wages. When you leave Australia permanently, you can claim this back as a Departing Australia Superannuation Payment (DASP) — though it is taxed at 65% upon withdrawal for WHV holders.</p>
+
+    <h2>Disclaimer</h2>
+  </div>
+
+  <div class="disclaimer-box">
+    <p>OzBudget is a guide only. Tax laws change and individual circumstances vary. This tool does not constitute financial or tax advice. For personalised advice, consult a registered tax agent or the <a href="https://www.ato.gov.au" target="_blank" rel="noopener">ATO website</a>.</p>
+  </div>
+
+  <div class="cta-wrap">
+    <a href="index.html" class="cta-btn">→ Open the calculator</a>
+  </div>
+</div>
+
+<footer>
+  <strong style="color:var(--text2);">OzBudget</strong> — Free Working Holiday Visa tax calculator for Australia.<br>
+  Based on ATO 2024–25 rates · <a href="privacy-policy.html" style="color:var(--gold);text-decoration:none;">Privacy Policy</a>
+</footer>
+
+</body>
+</html>
