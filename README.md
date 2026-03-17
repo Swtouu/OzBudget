@@ -1,4 +1,5 @@
 # 🇦🇺 OzBudget — Australia Working Holiday Visa Calculator
+<!-- v1.0.0 · 2025-03-17 -->
 
 A free, fully client-side financial toolkit built for Working Holiday Visa holders (subclass 417 & 462) working in Australia. No backend, no database — everything runs in the browser.
 
