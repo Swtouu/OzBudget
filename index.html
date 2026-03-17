@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<!-- OzBudget · index.html · v1.4.0 · 2025-03-17 -->
+<!-- OzBudget · index.html · v2.3.0 · 2025-03-17 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OzBudget — Australia Working Holiday Calculator</title>
 <meta name="description" content="Calculate your real take-home pay, tax, expenses and savings as a Working Holiday Visa holder in Australia. Free WHV tax calculator for subclass 417 & 462.">
+<meta name="description" content="Free Australian Working Holiday Visa tax calculator. Calculate take-home pay, tax, super, penalty rates, and budget — for WHV subclass 417 & 462 holders.">
+<meta name="keywords" content="working holiday visa tax calculator australia, WHV tax 417, australia backpacker tax, working holiday maker tax rate, how much tax australia working holiday">
+<meta property="og:title" content="OzBudget — Australia Working Holiday Visa Calculator">
+<meta property="og:description" content="Calculate your real take-home pay, tax, super, and budget as a Working Holiday Visa holder in Australia. Free tool for subclass 417 & 462.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ozbudget.netlify.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -71,12 +78,20 @@ header{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.9);backdrop-f
 .span-full{grid-column:1/-1;}
 @media(max-width:820px){.grid-2{grid-template-columns:1fr;}.grid-3{grid-template-columns:1fr 1fr;}.grid-4{grid-template-columns:1fr 1fr;}}
 @media(max-width:500px){.grid-3{grid-template-columns:1fr;}}
+/* ── TWO-ROW NAV ── */
 .main-nav{max-width:1100px;margin:0 auto;padding:0 1.5rem 1.5rem;}
-.main-nav-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;}
-.main-nav-tabs::-webkit-scrollbar{display:none;}
-.main-tab{height:36px;padding:0 16px;background:transparent;border:1px solid var(--border);border-radius:99px;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.nav-row{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+.nav-row::-webkit-scrollbar{display:none;}
+.nav-row-label{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);white-space:nowrap;padding-right:4px;flex-shrink:0;}
+.nav-divider{height:1px;background:var(--border);margin:6px 0;}
+.main-tab{height:34px;padding:0 14px;background:transparent;border:1px solid var(--border);border-radius:99px;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0;}
 .main-tab:hover{border-color:var(--border2);color:var(--text);}
 .main-tab.active{background:var(--gold-dim);color:var(--gold);border-color:rgba(212,168,67,.35);}
+.main-tab.secondary{font-size:11px;height:30px;padding:0 12px;opacity:.85;}
+.more-btn{height:30px;padding:0 12px;background:transparent;border:1px dashed var(--border);border-radius:99px;color:var(--text3);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0;}
+.more-btn:hover{border-color:var(--border2);color:var(--text2);}
+.more-btn.open{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+.secondary-row{display:none;}.secondary-row.open{display:flex;}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color .2s;}
 .card:hover{border-color:var(--border2);}
 .card-title{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--text3);text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;}
@@ -227,7 +242,19 @@ footer a{color:var(--gold);text-decoration:none;}
 .vc-input::-webkit-outer-spin-button,.vc-input::-webkit-inner-spin-button{-webkit-appearance:none;}
 .vc-input:focus{border-color:var(--gold);}
 
-/* ── BUDGET SNAPSHOT ── */
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;overflow:hidden;transition:border-color .15s;}
+.faq-item:hover{border-color:var(--border2);}
+.faq-q{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:1rem 1.1rem;cursor:pointer;font-size:14px;font-weight:500;color:var(--text);line-height:1.4;user-select:none;}
+.faq-chevron{color:var(--text3);font-size:12px;flex-shrink:0;margin-top:2px;transition:transform .2s;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 1.1rem 1rem;font-size:13px;color:var(--text2);line-height:1.8;border-top:1px solid var(--border);}
+.faq-a p{margin-bottom:.5rem;}.faq-a p:last-child{margin-bottom:0;}
+.faq-item.open .faq-a{display:block;}
+.faq-a strong{color:var(--text);}
+.faq-a a{color:var(--blue);text-decoration:none;}.faq-a a:hover{text-decoration:underline;}
+.faq-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;margin-right:6px;margin-bottom:4px;}
+.faq-section-title{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);padding:.8rem 0 .4rem;margin-top:.4rem;}
 .snap-btn{height:40px;padding:0 24px;background:var(--gold);color:#0d1117;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s;display:inline-flex;align-items:center;gap:8px;}
 .snap-btn:hover{opacity:.88;}
 .snap-preview{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:1rem;}
@@ -239,6 +266,7 @@ footer a{color:var(--gold);text-decoration:none;}
 <header>
   <a href="index.html" class="logo">OzBudget <span>WHV Calculator</span></a>
   <div class="header-nav">
+    <a href="blog.html">Tips &amp; Guides</a>
     <a href="about.html">About</a>
     <a href="privacy-policy.html">Privacy</a>
     <div class="header-badge">🇦🇺 2024–25 ATO</div>
@@ -248,25 +276,33 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <div class="hero">
   <h1>Your <em>complete</em> financial toolkit<br>for working in Australia</h1>
-  <p>Tax · Budget · Super · Penalty rates · TFN guide · Visa costs · Payslip check · Hours log · Milestones · Budget snapshot — built for WHV holders (subclass 417 &amp; 462).</p>
+  <p>Tax calculator · Budget tracker · Penalty rates · Payslip check · Hours log · TFN guide · Visa costs · FAQ — everything a WHV holder (subclass 417 &amp; 462) needs in one place.</p>
 </div>
 
 <div class="main-nav">
-  <div class="main-nav-tabs">
-    <button class="main-tab active" data-tab="income">💰 Income, Tax &amp; Budget</button>
-    <button class="main-tab" data-tab="super">🏦 Superannuation</button>
-    <button class="main-tab" data-tab="penalty">⏰ Penalty Rates</button>
-    <button class="main-tab" data-tab="goal">🎯 Rate Goal</button>
-    <button class="main-tab" data-tab="compare">📊 City Compare</button>
-    <button class="main-tab" data-tab="currency">💱 Currency</button>
-    <button class="main-tab" data-tab="secondyear">🚜 2nd Year Visa</button>
-    <button class="main-tab" data-tab="taxreturn">📋 Tax Return</button>
-    <button class="main-tab" data-tab="payslip">🧮 Payslip Check</button>
+  <!-- Row 1: Primary tools -->
+  <div class="nav-row">
+    <span class="nav-row-label">Calculate</span>
+    <button class="main-tab active" data-tab="income">💰 Income &amp; Budget</button>
     <button class="main-tab" data-tab="timelog">⏱ Hours Log</button>
+    <button class="main-tab" data-tab="payslip">🧮 Payslip Check</button>
+    <button class="main-tab" data-tab="penalty">⏰ Penalty Rates</button>
+    <button class="main-tab" data-tab="super">🏦 Super</button>
     <button class="main-tab" data-tab="milestones">🌏 Milestones</button>
-    <button class="main-tab" data-tab="tfn">🪪 TFN Guide</button>
-    <button class="main-tab" data-tab="visacost">💸 Visa Costs</button>
-    <button class="main-tab" data-tab="snapshot">📸 Budget Snapshot</button>
+  </div>
+  <div class="nav-divider"></div>
+  <!-- Row 2: Planning & Resources (collapsible) -->
+  <div class="nav-row">
+    <span class="nav-row-label">Plan &amp; Resources</span>
+    <button class="main-tab secondary" data-tab="goal">🎯 Rate Goal</button>
+    <button class="main-tab secondary" data-tab="compare">📊 City Compare</button>
+    <button class="main-tab secondary" data-tab="currency">💱 Currency</button>
+    <button class="main-tab secondary" data-tab="secondyear">🚜 2nd Year</button>
+    <button class="main-tab secondary" data-tab="taxreturn">📋 Tax Return</button>
+    <button class="main-tab secondary" data-tab="tfn">🪪 TFN Guide</button>
+    <button class="main-tab secondary" data-tab="visacost">💸 Visa Costs</button>
+    <button class="main-tab secondary" data-tab="snapshot">📸 Snapshot</button>
+    <button class="main-tab secondary" data-tab="faq">❓ FAQ</button>
   </div>
 </div>
 
@@ -917,6 +953,17 @@ footer a{color:var(--gold);text-decoration:none;}
   </div>
 </div>
 
+<!-- TAB: FAQ -->
+<div class="page-section container" id="tab-faq">
+  <div style="max-width:780px;margin:0 auto;">
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="card-title"><div class="ibadge" style="background:var(--gold-dim);">❓</div>Frequently Asked Questions — Working Holiday Visa &amp; Tax in Australia</div>
+      <p style="font-size:13px;color:var(--text2);">Common questions from WHV holders about tax, pay, super, and working in Australia. Use the calculator above to get personalised numbers.</p>
+    </div>
+    <div id="faq-list"></div>
+  </div>
+</div>
+
 <!-- AD BOTTOM -->
 <div class="ad-slot" id="ad-bottom" style="display:none;margin-top:1rem;">
   <div class="ad-inner"><div class="ad-label">Advertisement</div>
@@ -928,8 +975,9 @@ footer a{color:var(--gold);text-decoration:none;}
 <footer>
   <strong style="color:var(--text2);">OzBudget</strong> — Free Working Holiday Visa toolkit for Australia.<br>
   WHV tax: 15% ≤$45k · 32.5% $45k–$135k · 37% $135k–$190k · 45% above $190k<br>
-  <a href="about.html">About</a> · <a href="privacy-policy.html">Privacy Policy</a><br>
+  <a href="blog.html">Tips &amp; Guides</a> · <a href="about.html">About</a> · <a href="privacy-policy.html">Privacy Policy</a><br>
   <span style="display:block;margin-top:6px;">Guide only. Consult a registered tax agent for personalised advice.</span>
+  <span style="display:block;margin-top:8px;padding:8px 16px;background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7;max-width:600px;margin-left:auto;margin-right:auto;">🤖 This website was built with the assistance of AI tools. While we aim for accuracy, all tax rates, rules, and figures should be verified against official sources — <a href="https://www.ato.gov.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">ato.gov.au</a>, <a href="https://www.homeaffairs.gov.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">homeaffairs.gov.au</a>, and <a href="https://www.fairwork.gov.au" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">fairwork.gov.au</a> before making any financial decisions.</span>
 </footer>
 
 <!-- COOKIE BANNER -->
@@ -1322,12 +1370,69 @@ document.getElementById('currency-select').addEventListener('change',()=>{
   document.getElementById('fx-rate').value=FX_RATES[curr]||.65;
   updateAll();
 });
+// ── FAQ ──
+const FAQS=[
+  {section:'Tax basics',items:[
+    {q:'Do I pay tax in Australia on a working holiday visa?',a:`<p>Yes. Working Holiday Visa (WHV) holders — subclass 417 and 462 — are classified as <strong>non-residents for tax purposes</strong> and must pay tax on all income earned in Australia.</p><p>The good news is the rate is lower than most people expect for the first $45,000: you're taxed at a flat <strong>15%</strong>, which is actually lower than the resident rate in that range. Above $45,000 the rate rises to 32.5%, then 37%, then 45%.</p><p>Use the Income & Tax tab to calculate your exact tax based on your earnings.</p>`},
+    {q:'How much tax do I pay on $25/hr in Australia on a WHV?',a:`<p>At $25/hr working 38 hours a week, your annual gross is approximately <strong>$49,400</strong>. Under WHV tax rates, you'd pay roughly <strong>$8,280</strong> in tax — an effective rate of about <strong>16.8%</strong>.</p><p>That works out to approximately $159/week in tax, leaving you with around $783/week take-home. Use the calculator above to adjust for your exact hours and pay rate.</p>`},
+    {q:'What is the tax-free threshold and does it apply to me?',a:`<p><strong>No — it does not apply to WHV holders.</strong> The tax-free threshold ($18,200) is only available to Australian residents. As a working holiday maker you pay tax from the very first dollar you earn, starting at 15%.</p><p>Do not select "I want to claim the tax-free threshold" on your Tax File Number declaration form when starting a new job.</p>`},
+    {q:'What is the difference between the WHV tax rate and the regular rate?',a:`<p>Australian residents pay 0% on the first $18,200, then 19% up to $45,000. WHV holders pay <strong>15% from dollar one</strong>, but this flat rate actually means WHV holders pay <em>less tax</em> than residents on incomes below around $30,000 — and slightly more between $30,000 and $45,000.</p><p>Above $45,000, both resident and WHV rates converge to 32.5%. The main practical difference is no tax-free threshold and no low-income tax offset for WHV holders.</p>`},
+    {q:'Do I need to lodge a tax return in Australia?',a:`<p>Yes, if you earned any income in Australia during the financial year (1 July – 30 June). You lodge online at <a href="https://www.ato.gov.au" target="_blank" rel="noopener">ato.gov.au/myTax</a> after 1 July.</p><p>Many WHV holders are over-withheld during the year and receive a <strong>refund</strong> when they lodge. Use the Tax Return tab to estimate yours. If you've already left Australia, you can still lodge online or through a registered tax agent.</p>`},
+  ]},
+  {section:'Pay & penalty rates',items:[
+    {q:'What is the minimum wage in Australia in 2024–25?',a:`<p>The National Minimum Wage from 1 July 2024 is <strong>$24.10 per hour</strong> (or $915.90 per 38-hour week). Most award wages are higher than this floor.</p><p>Common WHV industries like hospitality and retail are covered by specific Modern Awards — Hospitality Industry Award, General Retail Industry Award — which set higher base rates and mandatory penalty rates for evenings, weekends, and public holidays.</p>`},
+    {q:'Am I entitled to penalty rates on weekends and public holidays?',a:`<p><strong>Yes.</strong> Penalty rates apply to all workers in Australia including WHV holders. Under the Hospitality Award, Saturday is 125% of your base rate and Sunday is 150%. Public holidays are typically 225–250%.</p><p>Use the Penalty Rates tab to calculate your exact rates for each day based on your award and base hourly rate.</p>`},
+    {q:'My employer is paying me cash — is that legal?',a:`<p>Cash in hand payments are legal only if you're still being paid at least the award minimum rate, you receive payslips, and the employer is paying tax and super on your behalf. In practice, many cash-in-hand arrangements are underpayment or wage theft.</p><p>If you're being paid cash without payslips, no super contributions, and below minimum wage, you can report your employer to the <strong>Fair Work Ombudsman</strong> at fairwork.gov.au — anonymously if preferred.</p>`},
+  ]},
+  {section:'Superannuation',items:[
+    {q:'Do I get superannuation as a working holiday visa holder?',a:`<p><strong>Yes.</strong> If you work for an Australian employer and earn more than $450 in a calendar month (this threshold was removed in 2022 — super now applies from the first dollar for most workers), your employer must pay <strong>11.5% of your ordinary earnings</strong> into a superannuation fund on top of your wage.</p><p>This is free money on top of your pay. Make sure you have a super fund and give your employer the details.</p>`},
+    {q:'How do I get my super back when I leave Australia?',a:`<p>You can claim your super as a <strong>Departing Australia Superannuation Payment (DASP)</strong> after your visa expires and you have left Australia. Apply online at ato.gov.au/DASP.</p><p>Important: DASP for WHV holders is taxed at <strong>65%</strong> — significantly higher than the 15% contributions tax paid going in. This is a deliberate policy. Despite the high tax rate, it's still worth claiming rather than leaving it unclaimed.</p><p>Use the Superannuation tab to see how much you've accrued and what you'll receive after DASP tax.</p>`},
+    {q:'Which superannuation fund should I choose?',a:`<p>Choose a fund with low fees and solid long-term returns. Popular options for WHV holders include <strong>AustralianSuper</strong>, <strong>Hostplus</strong> (good for hospitality workers), and <strong>REST</strong> (retail industry). Compare fees at <a href="https://www.moneysmart.gov.au" target="_blank" rel="noopener">moneysmart.gov.au</a>.</p><p>Avoid being defaulted into an employer's preferred fund without checking — some have higher fees. Always provide your Tax File Number to your super fund to avoid extra withholding on contributions.</p>`},
+  ]},
+  {section:'Tax File Number (TFN)',items:[
+    {q:'What happens if I work without a Tax File Number?',a:`<p>If you don't provide a TFN to your employer, they are legally required to withhold tax at the <strong>highest marginal rate of 45%</strong> — regardless of how little you earn. This applies from your very first pay.</p><p>You can reclaim the over-withheld tax by lodging a tax return, but it's far better to apply for your TFN as soon as you arrive. See the TFN Guide tab for step-by-step instructions.</p>`},
+    {q:'How do I apply for a TFN as a working holiday maker?',a:`<p>Apply online through the ATO website — it takes about 10 minutes. You'll need your passport and Australian address. Your TFN will arrive by post within 28 days.</p><p>You can apply at <a href="https://www.ato.gov.au" target="_blank" rel="noopener">ato.gov.au</a> under "Apply for a TFN — foreign passport holders". See our TFN Guide tab for the full step-by-step walkthrough.</p>`},
+  ]},
+  {section:'2nd year visa & regional work',items:[
+    {q:'How do I qualify for a second year working holiday visa?',a:`<p>To extend your subclass 417 visa for a second year, you must complete <strong>88 days (3 months) of specified work</strong> in regional Australia. Eligible work includes fruit picking, farming, construction, mining, and some hospitality work in regional areas.</p><p>Keep records of all your regional work — payslips, employment contracts, and a completed <strong>Form 1263</strong> signed by your employer. You'll need these when applying for the second-year visa extension.</p>`},
+    {q:'Does regional work pay less than city work?',a:`<p>Base rates are often similar to city rates since minimum award wages apply nationally. However, regional farm work may offer <strong>piece rates</strong> (paid per bin or kg picked) which can be higher or lower than hourly rates depending on crop and season.</p><p>Living costs in regional areas are significantly lower — rent can be as low as $100–200/week compared to $400–600 in Sydney. Use the 2nd Year Visa tab to model your net financial outcome during regional work.</p>`},
+  ]},
+  {section:'Banking & money',items:[
+    {q:'What is the best bank account for working holiday makers in Australia?',a:`<p>Most WHV holders use one of three options: <strong>ING Orange Everyday</strong> (no international fees, ATM rebates), <strong>Up Bank</strong> (great app, instant notifications, easy to use), or <strong>Commonwealth Bank</strong> (widest ATM network, easy to open on arrival).</p><p>For sending money home, <strong>Wise</strong> and <strong>Revolut</strong> offer significantly better exchange rates than traditional banks. Set these up before you arrive to avoid paying airport exchange booth rates.</p>`},
+    {q:'How much money should I bring to Australia to start?',a:`<p>Immigration guidelines suggest having at least <strong>AUD $5,000</strong> on arrival, but the real number depends on your city and lifestyle. In Sydney or Melbourne, budget for: first month rent + bond (~$3,000–4,000), flights, WHV application fee ($635), health insurance, and living costs before your first paycheck (~2–3 weeks).</p><p>Use the Visa Costs tab to calculate your personal upfront cost estimate.</p>`},
+  ]},
+];
+
+function buildFaq(){
+  const el=document.getElementById('faq-list');
+  if(!el)return;
+  el.innerHTML=FAQS.map(section=>`
+    <div class="faq-section-title">${section.section}</div>
+    ${section.items.map((item,i)=>`
+      <div class="faq-item" id="faq-${section.section.replace(/\s/g,'-')}-${i}">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <span>${item.q}</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">${item.a}</div>
+      </div>`).join('')}
+  `).join('');
+}
+
+function toggleFaq(el){
+  const isOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(f=>f.classList.remove('open'));
+  if(!isOpen)el.classList.add('open');
+}
+
+// ── TAB SWITCHING (two-row nav) ──
 document.querySelectorAll('.main-tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
     document.querySelectorAll('.main-tab').forEach(t=>t.classList.remove('active'));
     document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
     tab.classList.add('active');
-    document.getElementById('tab-'+tab.dataset.tab).classList.add('active');
+    const target=document.getElementById('tab-'+tab.dataset.tab);
+    if(target)target.classList.add('active');
   });
 });
 
@@ -1777,6 +1882,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   applyTheme(savedTheme);
   buildDayRows();
   buildVcList();
+  buildFaq();
   document.getElementById('tl-award').addEventListener('change',updateTimelog);
   document.getElementById('tl-week-start').addEventListener('change',updateTimelog);
   loadFromUrl();updateAll();
