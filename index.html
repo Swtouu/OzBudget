@@ -115,6 +115,13 @@ select:focus{border-color:var(--gold);}
 .ad-label{font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;padding:6px 0 4px;}
 .info-box{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--radius-sm);padding:.9rem 1.1rem;font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem;}
 hr.divider{border:none;border-top:1px solid var(--border);margin:1rem 0;}
+.income-summary{display:flex;align-items:center;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:.65rem 1.1rem;margin-bottom:1.2rem;flex-wrap:wrap;gap:6px;}
+.income-summary .is-item{display:flex;align-items:center;gap:6px;padding:0 12px;border-right:1px solid var(--border);}
+.income-summary .is-item:first-child{padding-left:0;}
+.income-summary .is-item:last-child{border-right:none;}
+.income-summary .is-label{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);}
+.income-summary .is-value{font-size:13px;font-weight:500;font-variant-numeric:tabular-nums;}
+.income-summary .is-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
 footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);font-size:12px;color:var(--text3);line-height:1.8;}
 footer a{color:var(--gold);text-decoration:none;}
 #cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#161b22;border-top:1px solid rgba(255,255,255,.1);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -138,8 +145,7 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <div class="main-nav">
   <div class="main-nav-tabs">
-    <button class="main-tab active" data-tab="income">💰 Income &amp; Tax</button>
-    <button class="main-tab" data-tab="budget">🧾 Budget</button>
+    <button class="main-tab active" data-tab="income">💰 Income, Tax &amp; Budget</button>
     <button class="main-tab" data-tab="super">🏦 Superannuation</button>
     <button class="main-tab" data-tab="penalty">⏰ Penalty Rates</button>
     <button class="main-tab" data-tab="goal">🎯 Rate Goal</button>
@@ -158,9 +164,11 @@ footer a{color:var(--gold);text-decoration:none;}
   </div>
 </div>
 
-<!-- TAB: INCOME -->
+<!-- TAB: INCOME + BUDGET (merged) -->
 <div class="page-section active container" id="tab-income">
-  <div class="grid-2">
+
+  <!-- ROW 1: Income inputs + Tax results -->
+  <div class="grid-2" style="margin-bottom:1.5rem;">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:rgba(212,168,67,.15);">💰</div>Income Details</div>
       <div class="field"><label>Pay period</label>
@@ -206,10 +214,8 @@ footer a{color:var(--gold);text-decoration:none;}
       </div>
     </div>
   </div>
-</div>
 
-<!-- TAB: BUDGET -->
-<div class="page-section container" id="tab-budget">
+  <!-- ROW 2: Expenses + Budget summary -->
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:rgba(248,81,73,.12);">🧾</div>Monthly Expenses</div>
@@ -265,10 +271,18 @@ footer a{color:var(--gold);text-decoration:none;}
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- TAB: SUPER -->
 <div class="page-section container" id="tab-super">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross</span><span class="is-value c-gold" id="is-gross-super">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--red);"></div><span class="is-label">Tax</span><span class="is-value c-red" id="is-tax-super">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Annual net</span><span class="is-value c-green" id="is-net-super">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Weekly net</span><span class="is-value c-blue" id="is-wknet-super">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:var(--purple-dim);">🏦</div>Super Calculator</div>
@@ -305,6 +319,13 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- TAB: PENALTY RATES -->
 <div class="page-section container" id="tab-penalty">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross</span><span class="is-value c-gold" id="is-gross-penalty">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--red);"></div><span class="is-label">Tax</span><span class="is-value c-red" id="is-tax-penalty">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Annual net</span><span class="is-value c-green" id="is-net-penalty">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Hourly (after tax)</span><span class="is-value c-blue" id="is-hrly-penalty">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:rgba(212,168,67,.15);">⏰</div>Penalty Rate Calculator</div>
@@ -330,6 +351,13 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- TAB: GOAL -->
 <div class="page-section container" id="tab-goal">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Current annual gross</span><span class="is-value c-gold" id="is-gross-goal">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Current annual net</span><span class="is-value c-green" id="is-net-goal">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Monthly net</span><span class="is-value c-blue" id="is-monet-goal">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--red);"></div><span class="is-label">Monthly expenses</span><span class="is-value c-red" id="is-exp-goal">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:var(--green-dim);">🎯</div>Savings Goal Calculator</div>
@@ -361,6 +389,12 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- TAB: CITY COMPARE -->
 <div class="page-section container" id="tab-compare">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross</span><span class="is-value c-gold" id="is-gross-compare">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Monthly net</span><span class="is-value c-green" id="is-monet-compare">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--red);"></div><span class="is-label">Tax rate</span><span class="is-value c-red" id="is-taxrate-compare">0%</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="card" style="margin-bottom:1rem;">
     <div class="card-title"><div class="ibadge" style="background:var(--blue-dim);">📊</div>City vs City Comparison</div>
     <p style="font-size:13px;color:var(--text2);">How your budget holds up in different Australian cities — using your income from the Income tab.</p>
@@ -370,6 +404,12 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- TAB: CURRENCY -->
 <div class="page-section container" id="tab-currency">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross (AUD)</span><span class="is-value c-gold" id="is-gross-currency">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Annual net (AUD)</span><span class="is-value c-green" id="is-net-currency">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Weekly net (AUD)</span><span class="is-value c-blue" id="is-wknet-currency">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:var(--teal-dim);">💱</div>Currency Converter</div>
@@ -417,6 +457,13 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- TAB: 2ND YEAR -->
 <div class="page-section container" id="tab-secondyear">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross</span><span class="is-value c-gold" id="is-gross-sy">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Annual net</span><span class="is-value c-green" id="is-net-sy">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Weekly net</span><span class="is-value c-blue" id="is-wknet-sy">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--purple);"></div><span class="is-label">Current hourly</span><span class="is-value c-purple" id="is-hrly-sy">$0</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:rgba(212,168,67,.15);">🚜</div>Second Year Visa Planner</div>
@@ -457,6 +504,13 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- TAB: TAX RETURN -->
 <div class="page-section container" id="tab-taxreturn">
+  <div class="income-summary">
+    <div class="is-item"><div class="is-dot" style="background:var(--gold);"></div><span class="is-label">Annual gross</span><span class="is-value c-gold" id="is-gross-tr">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--red);"></div><span class="is-label">Tax owed (full year)</span><span class="is-value c-red" id="is-tax-tr">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--green);"></div><span class="is-label">Annual net</span><span class="is-value c-green" id="is-net-tr">$0</span></div>
+    <div class="is-item"><div class="is-dot" style="background:var(--blue);"></div><span class="is-label">Effective rate</span><span class="is-value c-blue" id="is-eff-tr">0%</span></div>
+    <div class="is-item" style="margin-left:auto;border-right:none;"><span class="is-label" style="color:var(--text3);">↖ From Income &amp; Tax tab</span></div>
+  </div>
   <div class="grid-2">
     <div class="card">
       <div class="card-title"><div class="ibadge" style="background:var(--blue-dim);">📋</div>Tax Return Estimator</div>
@@ -638,6 +692,39 @@ function updateAll(){
   }
   if(!mlExempt&&ml>0)bHtml+=`<div class="brow"><div class="brow-label"><div class="brow-dot" style="background:rgba(251,191,36,.2);border:1.5px solid #fbbf24;"></div>Medicare levy<span class="tag tag-gold">2%</span></div><div class="brow-val c-red">${fmt(ml)}</div></div>`;
   document.getElementById('bracket-breakdown').innerHTML=bHtml;
+
+  // INCOME SUMMARY BARS (all secondary tabs)
+  const hrlyAfterTaxVal = annualNet/(52*(v('hours-input')||38));
+  const setIS=(sfx,g,t,n)=>{
+    const eg=document.getElementById('is-gross-'+sfx);
+    const et=document.getElementById('is-tax-'+sfx);
+    const en=document.getElementById('is-net-'+sfx);
+    if(eg)eg.textContent=fmt(g);
+    if(et)et.textContent=fmt(t);
+    if(en)en.textContent=fmt(n);
+  };
+  setIS('super',gross,tax,annualNet);
+  setIS('penalty',gross,tax,annualNet);
+  setIS('goal',gross,tax,annualNet);
+  setIS('currency',gross,tax,annualNet);
+  setIS('sy',gross,tax,annualNet);
+  setIS('tr',gross,tax,annualNet);
+  // weekly net
+  ['super','currency','sy'].forEach(sfx=>{const el=document.getElementById('is-wknet-'+sfx);if(el)el.textContent=fmt(annualNet/52);});
+  // monthly net
+  ['goal','compare'].forEach(sfx=>{const el=document.getElementById('is-monet-'+sfx);if(el)el.textContent=fmt(monthlyNet);});
+  // compare gross
+  const ecg=document.getElementById('is-gross-compare');if(ecg)ecg.textContent=fmt(gross);
+  const ecr=document.getElementById('is-taxrate-compare');if(ecr)ecr.textContent=(eff*100).toFixed(1)+'%';
+  // goal net + expenses
+  const egn=document.getElementById('is-net-goal');if(egn)egn.textContent=fmt(annualNet);
+  const ege=document.getElementById('is-exp-goal');if(ege)ege.textContent=fmt(monthlyExp);
+  // penalty hourly
+  const eph=document.getElementById('is-hrly-penalty');if(eph)eph.textContent='$'+hrlyAfterTaxVal.toFixed(2)+'/hr';
+  // sy hourly
+  const esh=document.getElementById('is-hrly-sy');if(esh)esh.textContent='$'+(v('income-input')||0).toFixed(2)+'/hr';
+  // tr effective rate
+  const ete=document.getElementById('is-eff-tr');if(ete)ete.textContent=(eff*100).toFixed(1)+'%';
 
   // BUDGET
   document.getElementById('total-exp-mo').textContent=fmt(monthlyExp);
